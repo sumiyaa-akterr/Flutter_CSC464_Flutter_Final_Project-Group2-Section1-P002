@@ -1,7 +1,4 @@
-// ============================================================
-// lib/screens/match_history_screen.dart
-//
-// ✅ TASK 6 — Match History Display  ← YOUR PART
+// TASK 6 — Match History Display  ← Liya's part
 //
 // Shows all previously played matches fetched from Firestore.
 // Uses a StreamBuilder so the list updates in real-time

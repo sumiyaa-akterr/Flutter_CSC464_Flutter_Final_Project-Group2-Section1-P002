@@ -25,9 +25,15 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -41,46 +47,28 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBmGnuCtppE3AuC38-hSyyKm89R9pFA_zY',
-    appId: '1:317486815772:web:9c1ded3cfa9a0e2e951dd9',
-    messagingSenderId: '317486815772',
-    projectId: 'tic-tac-toe-group-9e01f',
-    authDomain: 'tic-tac-toe-group-9e01f.firebaseapp.com',
-    storageBucket: 'tic-tac-toe-group-9e01f.firebasestorage.app',
+    apiKey: 'AIzaSyBT4QfO5F_0yBhe08AzOh3xbaOvsXon9EM',
+    appId: '1:445160326884:web:f8c90e05a076fff1e54ef1',
+    messagingSenderId: '445160326884',
+    projectId: 'tic-tac-toe-cse464',
+    authDomain: 'tic-tac-toe-cse464.firebaseapp.com',
+    storageBucket: 'tic-tac-toe-cse464.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCuUuew23wkZZY_peY2hEIQkYuHoyehXJU',
-    appId: '1:317486815772:android:2eefed0c8d67d64f951dd9',
-    messagingSenderId: '317486815772',
-    projectId: 'tic-tac-toe-group-9e01f',
-    storageBucket: 'tic-tac-toe-group-9e01f.firebasestorage.app',
+    apiKey: 'AIzaSyDVedkUWHxeROz3WHWfi3L9CC6c1OS1zFc',
+    appId: '1:445160326884:android:ee572adbe077103ce54ef1',
+    messagingSenderId: '445160326884',
+    projectId: 'tic-tac-toe-cse464',
+    storageBucket: 'tic-tac-toe-cse464.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAgSrlLC4XRaJxazrIiHsk6aKx5bQ87K5g',
-    appId: '1:317486815772:ios:4f0361bad27d6dc1951dd9',
-    messagingSenderId: '317486815772',
-    projectId: 'tic-tac-toe-group-9e01f',
-    storageBucket: 'tic-tac-toe-group-9e01f.firebasestorage.app',
+    apiKey: 'AIzaSyC1DrSXhC0bVSjvAkIAYHwfQShRoEqlzzU',
+    appId: '1:445160326884:ios:803c24b86ccc4b97e54ef1',
+    messagingSenderId: '445160326884',
+    projectId: 'tic-tac-toe-cse464',
+    storageBucket: 'tic-tac-toe-cse464.firebasestorage.app',
     iosBundleId: 'com.example.ticTacToeApp',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAgSrlLC4XRaJxazrIiHsk6aKx5bQ87K5g',
-    appId: '1:317486815772:ios:4f0361bad27d6dc1951dd9',
-    messagingSenderId: '317486815772',
-    projectId: 'tic-tac-toe-group-9e01f',
-    storageBucket: 'tic-tac-toe-group-9e01f.firebasestorage.app',
-    iosBundleId: 'com.example.ticTacToeApp',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBmGnuCtppE3AuC38-hSyyKm89R9pFA_zY',
-    appId: '1:317486815772:web:4b1ed4af430ca850951dd9',
-    messagingSenderId: '317486815772',
-    projectId: 'tic-tac-toe-group-9e01f',
-    authDomain: 'tic-tac-toe-group-9e01f.firebaseapp.com',
-    storageBucket: 'tic-tac-toe-group-9e01f.firebasestorage.app',
   );
 }
