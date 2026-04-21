@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tic_tac_toe_app/widgets/game-board.dart';
 import 'firebase_options.dart'; // This is the file you just generated!
 
 void main() async {
   // 1. Ensure Flutter is ready
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // 2. Initialize Firebase using the options file
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(const TicTacToeApp());
 }
@@ -26,7 +25,7 @@ class TicTacToeApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepPurple, // Changes the whole app's color palette
-          brightness: Brightness.light, 
+          brightness: Brightness.light,
         ),
         // Forces all ElevatedButtons to look exactly the same
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -41,12 +40,16 @@ class TicTacToeApp extends StatelessWidget {
         ),
         // Forces all Text to have a consistent font and color
         textTheme: const TextTheme(
-          displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black87),
+          displayLarge: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
           bodyLarge: TextStyle(fontSize: 18, color: Colors.black54),
         ),
       ),
       home: const Scaffold(
-        body: Center(child: Text('Firebase is Ready!')),
+        body: GameBoard(playerXName: "Player X", playerOName: "Player O"),
       ),
     );
   }
