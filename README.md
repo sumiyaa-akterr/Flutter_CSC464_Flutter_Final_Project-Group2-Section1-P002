@@ -1,64 +1,68 @@
-# 🎮 Tic-Tac-Toe App (Flutter + Firebase)
+# 🎮 Tic-Tac-Toe Pro (Flutter + Firebase)
 
-Welcome to the project! This repository contains our shared code. Firebase is already connected, and the base Flutter app is fully set up. 
-
-## 🚀 How to Start Working
-
-**Do not run `flutter create`!** The app is already created. Follow these exact steps to get the code on your computer:
-
-1. **Clone the repository:**
-   `git clone [PASTE_YOUR_GITHUB_URL_HERE]`
-2. **Open the folder in VS Code.**
-3. **Download all the Firebase packages:**
-   Open your terminal and run: `flutter pub get`
-4. **Fetch the team branches:**
-   Run: `git fetch`
+A fully integrated, cross-platform Tic-Tac-Toe application built with Flutter and powered by Firebase. This project was developed as a collaborative team effort, featuring real-time game logic, persistent match history, and a modern Material 3 UI.
 
 ---
 
-## 🌿 Our Git Workflow
+## ✨ Final Features
 
-We are using a **Pull Request (PR)** system. You cannot push code directly to `main` or `develop`. 
-
-1. Find your assigned task below and switch to your specific branch:
-   `git checkout [your-branch-name]`
-2. Write your code and test it locally.
-3. Commit and push your changes to your branch:
-   `git add .`
-   `git commit -m "brief description of what you did"`
-   `git push`
-4. Go to GitHub and click **"Compare & pull request"** to merge your branch into `develop`. 
+* **Custom Player Profiles:** Interactive dialogs to set custom names for Player X and Player O.
+* **Smart Game Engine:** Automated win and draw detection with a real-time scoreboard tracking X Wins, O Wins, and Draws.
+* **Cloud Match History:** Every completed game is automatically synced to **Firebase Firestore** with details on the winner and final board state.
+* **Dynamic Controls:** Features a "Reset Board" functionality and a toggle to choose which player starts the next match.
+* **Polished UI:** A responsive 3x3 game board utilizing `AspectRatio` for a perfect square grid across all devices.
 
 ---
 
-## 📋 Team Assignments & Branches
+## 🛠️ Tech Stack & Architecture
 
-Each task has a dedicated branch already waiting for you.
-
-### **Member 1: Setup & Board (The "Face")**
-* **Task 1: Name Entry Screen** * Branch: `feat/player-names`
-  * Goal: Build the UI to let players enter their names before the game starts.
-* **Task 2: 3x3 Interactive Grid**
-  * Branch: `feat/game-board`
-  * Goal: Build the visual Tic-Tac-Toe board that users can tap.
-
-### **Member 2: Logic & Scoreboard (The "Brain")**
-* **Task 3: Win/Tie Detection**
-  * Branch: `feat/game-logic`
-  * Goal: Write the Dart rules to detect when someone gets 3-in-a-row or a tie.
-* **Task 4: Scoreboard UI**
-  * Branch: `feat/scoreboard`
-  * Goal: Build the UI to display how many games X has won, O has won, and ties.
-
-### **Member 3: Controls & Cloud (The "Memory")**
-* **Task 5: Game Controls**
-  * Branch: `feat/game-controls`
-  * Goal: Add "Reset Game" and "Switch Starting Player" buttons.
-* **Task 6: Firebase Match History**
-  * Branch: `feat/match-history`
-  * Goal: Save finished game data to Firestore and build a UI to display past matches.
+* **Frontend:** [Flutter](https://flutter.dev/) (Material 3)
+* **Backend/Database:** [Google Firebase Firestore](https://firebase.google.com/docs/firestore)
+* **State Management:** `setState` with a centralized `TicTacToeGame` logic class.
+* **Architecture:** Modular file structure for better maintainability:
+    * `lib/models/`: Game logic and Match data models.
+    * `lib/widgets/`: Reusable UI components (Board, Scoreboard).
+    * `lib/services/`: Firebase Firestore integration logic.
+    * `lib/screens/`: Navigation and History screens.
 
 ---
 
-## 🎨 Design Rules
-To keep our app from looking messy, please do not hardcode random colors! Use the standard Material widgets (`ElevatedButton`, `Text`) and they will automatically style themselves based on our global theme in `main.dart`.
+## 🚀 Getting Started
+
+To run this project locally, ensure you have Flutter installed and follow these steps:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [YOUR_GITHUB_URL_HERE]
+    ```
+2.  **Install dependencies:**
+    ```bash
+    flutter pub get
+    ```
+3.  **Firebase Configuration:**
+    The project includes a pre-configured `firebase_options.dart` file. Ensure you are targeting a supported platform (Web, Android, or iOS).
+4.  **Run the app:**
+    ```bash
+    flutter run
+    ```
+
+---
+
+## 👥 Team Contributions
+
+The project was executed using a modular "Feature-Branch" workflow:
+
+* **Ummay Humaira Rashid (Setup & Board):** Designed the core interactive 3x3 grid and the player name entry systems.
+* **Sumiya Akter (Logic & Scoreboard):** Developed the win/draw algorithms and the persistent scoreboard UI.
+* **Kazi Fabiha Golam Liya (Controls & Cloud):** Implemented the Firestore match history persistence, game reset controls, and led the final project integration.
+
+---
+
+## 🎨 Design System
+
+The app adheres to **Material 3** standards, utilizing a deep purple color scheme. All widgets are styled dynamically through the `ThemeData` to ensure a consistent, modern aesthetic across the entire user experience.
+
+---
+
+### **Final Project Status: RELEASED**
+The project was successfully merged from `develop` into `main` after thorough integration testing. All features are verified and functional.
