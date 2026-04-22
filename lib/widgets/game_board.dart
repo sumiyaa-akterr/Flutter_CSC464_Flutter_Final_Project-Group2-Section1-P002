@@ -1,70 +1,61 @@
 import 'package:flutter/material.dart';
+import '../models/game_logic.dart';
 
-class GameBoard extends StatefulWidget {
-  final String playerXName;
-  final String playerOName;
+class GameBoard extends StatelessWidget {
+  final TicTacToeGame game;
+  final VoidCallback onMove;
 
-  const GameBoard({
-    super.key,
-    required this.playerXName,
-    required this.playerOName,
-  });
-
-  @override
-  State<GameBoard> createState() => _GameBoardState();
-}
-
-class _GameBoardState extends State<GameBoard> {
-  List<String> board = List.filled(9, '');
-  String currentPlayer = 'X';
-
-  void makeMove(int index) {
-    if (board[index] != '') return;
-
-    setState(() {
-      board[index] = currentPlayer;
-      currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
-    });
-  }
+  const GameBoard({super.key, required this.game, required this.onMove});
 
   @override
   Widget build(BuildContext context) {
+    // 1. Center the board so it doesn't hug the top
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: AspectRatio(
-          aspectRatio: 1,
-          child: GridView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 9,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () => makeMove(index),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.grey),
+      // 2. AspectRatio forces the board to be a perfect square 
+      // preventing those "long bars" from your screenshot.
+      child: AspectRatio(
+        aspectRatio: 1.0, 
+        child: GridView.count(
+          crossAxisCount: 3,
+          shrinkWrap: true,
+          // 3. Add spacing so the cells don't touch
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 8, 
+          padding: const EdgeInsets.all(8),
+          physics: const NeverScrollableScrollPhysics(),
+          children: List.generate(9, (index) => GestureDetector(
+            onTap: () {
+              // Only trigger move if the cell is empty and game is active
+              if (game.board[index] == '' && !game.isGameOver) {
+                game.makeMove(index);
+                onMove();
+              }
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.deepPurple.withOpacity(0.2)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
                   ),
-                  child: Center(
-                    child: Text(
-                      board[index],
-                      style: TextStyle(
-                        fontSize: 38,
-                        fontWeight: FontWeight.bold,
-                        color: board[index] == 'X' ? Colors.blue : Colors.red,
-                      ),
-                    ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  game.board[index],
+                  style: TextStyle(
+                    fontSize: 48, // Slightly larger for better visibility
+                    fontWeight: FontWeight.bold,
+                    color: game.board[index] == 'X' ? Colors.deepPurple : Colors.orange,
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            ),
+          )),
         ),
       ),
     );
