@@ -13,10 +13,19 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(const TicTacToeApp());
+
+  try {
+    // Check if Firebase is already initialized to prevent the duplicate app error
+    if (Firebase.apps.isEmpty) {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+    }
+  } catch (e) {
+    print("Firebase already initialized or error: $e");
+  }
+
+  runApp(const TicTacToeApp()); // Make sure this matches your root widget name
 }
 
 class TicTacToeApp extends StatelessWidget {
