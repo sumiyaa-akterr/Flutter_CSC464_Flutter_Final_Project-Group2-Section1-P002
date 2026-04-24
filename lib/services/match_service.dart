@@ -1,4 +1,9 @@
 // TASK 6 — Liya: code for saving match results to Firestore and loading
+// //
+// This file handles all Firestore database operations.
+// Think of it as a "helper" that talks to Firebase so the
+// rest of the app doesn't have to worry about database code.
+// ============================================================
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/match_model.dart';
 
