@@ -1,19 +1,10 @@
-// ============================================================
-// lib/services/match_service.dart
-//
 // TASK 6 — Liya: code for saving match results to Firestore and loading
-// //
-// This file handles all Firestore database operations.
-// Think of it as a "helper" that talks to Firebase so the
-// rest of the app doesn't have to worry about database code.
-// ============================================================
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/match_model.dart';
 
 class MatchService {
   // Get a reference to the 'matches' collection in Firestore
-  // This maps to: /matches/{matchId} in your Firebase console
+  // This maps to: /matches/{matchId} in Firebase console
   static final _collection =
       FirebaseFirestore.instance.collection('matches');
 
@@ -32,7 +23,7 @@ class MatchService {
   }
 
   // ── LOAD all matches from Firestore ───────────────────────
-  // Returns a Stream — this means the UI updates automatically
+  // Returns a Stream: this means the UI updates automatically
   // whenever new data is added to Firestore (real-time).
   // Sorted: newest match first.
   static Stream<List<GameMatch>> getMatches() {
